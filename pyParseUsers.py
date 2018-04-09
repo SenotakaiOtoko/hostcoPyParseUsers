@@ -22,6 +22,8 @@ class HttpProcessor(BaseHTTPRequestHandler):
 	
 driver = webdriver.chrome.webdriver.WebDriver('chromedriver.exe')
 
+print("Feature added!")
+
 #driver = webdriver.Firefox()
 driver.get("https://portal.hostco.ru/userlist/")
 assert "ХОСТ" in driver.title
