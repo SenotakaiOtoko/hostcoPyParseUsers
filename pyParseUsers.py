@@ -26,8 +26,6 @@ driver = webdriver.chrome.webdriver.WebDriver('chromedriver.exe')
 driver.get("https://portal.hostco.ru/userlist/")
 assert "ХОСТ" in driver.title
 
-
-
 elems = driver.find_elements_by_css_selector("#content > table > tbody > tr > td > p > a")
 user_links = []
 for el in elems:
@@ -42,6 +40,7 @@ for lnk in user_links:
 	name = driver.find_element_by_class_name("page-title")
 	user_list.append(user(avatar.get_attribute("src"), name, info.text))
 
+
 table = "<table><tboby>"
 for usr in user_list:
 	table += "<tr><td><img src=\"" + usr.avatar + "\"><\td>"
@@ -53,7 +52,7 @@ f = open("./file.html",'w')
 f.write(table)
 
 driver.close()
-
+print("Well done!")
 #serv = HTTPServer(("localhost",80),HttpProcessor.init(table))
 #serv.serve_forever()
 
