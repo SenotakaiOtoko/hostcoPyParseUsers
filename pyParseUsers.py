@@ -22,11 +22,11 @@ class HttpProcessor(BaseHTTPRequestHandler):
 	
 driver = webdriver.chrome.webdriver.WebDriver('chromedriver.exe')
 
+print("Feature added!")
+
 #driver = webdriver.Firefox()
 driver.get("https://portal.hostco.ru/userlist/")
 assert "ХОСТ" in driver.title
-
-
 
 elems = driver.find_elements_by_css_selector("#content > table > tbody > tr > td > p > a")
 user_links = []
@@ -43,17 +43,21 @@ for lnk in user_links:
 	name = driver.find_element_by_class_name("page-title")
 	user_list.append(user(avatar.get_attribute("src"), name, info.text))
 
+	
+print("Oh, no! Somebody is committed here! AWFUL!")
+
 table = "<table><tboby>"
 for usr in user_list:
-	table = table + "<tr><td><img src=\"" + usr.avatar + "\"><\td>"
-	table = table + "<td>" + usr.name + "</td>"
-	table = table + "<td>" + usr.info + "</td></tr>"
-table = table + "</tbody></table>"
+	table += "<tr><td><img src=\"" + usr.avatar + "\"><\td>"
+	table += "<td>" + usr.name + "</td>"
+	table += "<td>" + usr.info + "</td></tr>"
+table += "</tbody></table>"
 
-print(table)
+f = open("./file.html",'w')
+f.write(table)
 
 driver.close()
-
+print("Well done!")
 #serv = HTTPServer(("localhost",80),HttpProcessor.init(table))
 #serv.serve_forever()
 
