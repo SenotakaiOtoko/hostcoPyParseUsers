@@ -44,12 +44,13 @@ for lnk in user_links:
 
 table = "<table><tboby>"
 for usr in user_list:
-	table = table + "<tr><td><img src=\"" + usr.avatar + "\"><\td>"
-	table = table + "<td>" + usr.name + "</td>"
-	table = table + "<td>" + usr.info + "</td></tr>"
-table = table + "</tbody></table>"
+	table += "<tr><td><img src=\"" + usr.avatar + "\"><\td>"
+	table += "<td>" + usr.name + "</td>"
+	table += "<td>" + usr.info + "</td></tr>"
+table += "</tbody></table>"
 
-print(table)
+f = open("./file.html",'w')
+f.write(table)
 
 driver.close()
 
