@@ -40,6 +40,8 @@ for lnk in user_links:
 	name = driver.find_element_by_class_name("page-title")
 	user_list.append(user(avatar.get_attribute("src"), name, info.text))
 
+	
+print("Oh, no! Somebody is committed here! AWFUL!")
 
 table = "<table><tboby>"
 for usr in user_list:
