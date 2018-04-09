@@ -37,6 +37,7 @@ user_list = []
 
 for lnk in user_links:
 	driver.get(lnk)
+	assert "ХОСТ" in driver.title
 	avatar = driver.find_element_by_css_selector(".user-avatar-personal img")
 	info = driver.find_element_by_class_name("user-info-personal")
 	name = driver.find_element_by_class_name("page-title")
