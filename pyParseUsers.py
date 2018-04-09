@@ -8,9 +8,16 @@ driver.get("https://portal.hostco.ru/userlist/")
 assert "ХОСТ" in driver.title
 
 
-elems = driver.find_elements_by_css_selector("#content > table > tbody > tr:nth-child(2) > td:nth-child(2) > p > a")
+
+elems = driver.find_elements_by_css_selector("#content > table > tbody > tr > td > p > a")
+users = []
 for el in elems:
-	print(el.text())
+	users.append(el.get_attribute("href"))
+
+for usr in users:
+	driver.get(usr)
+	#avatar = driver.find_element_by_class("user-avatar-personal")
+	#info = driver.find_element_by_class("user-info-personal")
 
 	
 #elem.send_keys("pycon")
